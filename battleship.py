@@ -37,3 +37,17 @@ class Board:
 	def check_win(self):
 
 		pass
+
+	def __repr__(self):
+
+		return f"<Board of {self.player}>"
+
+class Ship:
+	""" A class to represent a ship """
+	def __init__(self, num_holes, start_pos, orientation):
+		self.num_holes = num_holes
+		self.start_pos = start_pos
+		self.orientation = orientation
+
+	def __repr__(self):
+		return f"holes: {self.num_holes}, start: {self.start_pos}, orient: {self.orientation}>"
