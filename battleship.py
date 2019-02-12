@@ -15,3 +15,25 @@
 # Players
 	player_1 - create a board
 	player_2 - create a board
+
+class Board:
+	""" A class to represent a board for each player """
+	def __init__(self, player):
+		self.player = player
+
+	def create_board(self):
+
+		pass
+
+	def display_board(self):
+
+		pass
+
+	def check_hits(self, location, player):
+		#if ship at location, hit
+
+		check_win()
+
+	def check_win(self):
+
+		pass
