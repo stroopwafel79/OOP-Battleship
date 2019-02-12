@@ -25,6 +25,9 @@ class Board:
 
 		pass
 
+	def add_ship(self, ship, orientation):
+		pass
+
 	def display_board(self):
 
 		pass
