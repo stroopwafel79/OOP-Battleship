@@ -18,29 +18,52 @@
 
 class Board:
 	""" A class to represent a board for each player """
+	
+
 	def __init__(self, player):
+		""" Instantiate each new board with a player and a board
+			consisting of 10 rows and columns of zeros: 
+
+			[[0, 0, 0, 0, 0, 0, 0, 0, 0, 0], 
+		     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0], 
+		     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0], 
+		     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0], 
+		     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0], 
+		     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0], 
+		     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0], 
+		     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0], 
+		     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0], 
+		     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]]
+
+		"""
+
 		self.player = player
+		self.board = [[0] * 10 for i in range(10)]
 
-	def create_board(self):
-		""" Create a 10 x 10 board that consists of a matrix of zeros """
-
-		return [[0] * 10 for i in range(10)]
-
-	def add_ship(self, ship, orientation):
-		pass
 
 	def display_board(self):
+		""" Print the board """
 
+		print(self.board)
+
+
+	def add_ship(self, ship, orientation):
+
+		# check that hole ship added to are not already taken
+		# check that no holes in ship are off the board.
 		pass
+
 
 	def check_hits(self, location, player):
 		#if ship at location, hit
 
 		check_win()
 
+
 	def check_win(self):
 
 		pass
+
 
 	def __repr__(self):
 
@@ -57,4 +80,5 @@ class Ship:
 		return f"holes: {self.num_holes}, start: {self.start_pos}, orient: {self.orientation}>"
 
 
-player1_board = Board("player1")
+# player1_board = Board("player1")
+# player1_board.display_board()
