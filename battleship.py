@@ -36,7 +36,6 @@ class Board:
 		     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]]
 
 		"""
-
 		self.player = player
 		self.board = [[0] * 10 for i in range(10)]
 
@@ -47,7 +46,7 @@ class Board:
 		print(self.board)
 
 
-	def add_ship(self, ship, orientation):
+	def add_ship(self, start_x, start_y, ship, orientation):
 
 		# check that hole ship added to are not already taken
 		# check that no holes in ship are off the board.
