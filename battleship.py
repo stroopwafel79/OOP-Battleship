@@ -48,11 +48,27 @@ class Board:
 
 
 	def add_ship(self, num_holes, start_pos_row, start_pos_colmn, orientation):
+		""" 
+		Add a ship to the board. A ship on the board will be represented by
+		the number of holes it has. A ship will not be added if part of it
+		hangs off the board or if another ship is already there.
+		Ex: 
+			[[5, 5, 5, 5, 5, 0, 0, 0, 0, 0], 
+		     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0], 
+		     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0], 
+		     [0, 0, 0, 0, 0, 2, 0, 0, 0, 0], 
+		     [0, 0, 0, 0, 0, 2, 0, 0, 0, 0], 
+		     [0, 3, 0, 0, 0, 0, 0, 0, 0, 0], 
+		     [0, 3, 0, 0, 0, 0, 0, 0, 0, 0], 
+		     [0, 3, 0, 0, 0, 3, 3, 3, 0, 0], 
+		     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0], 
+		     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]]
+		"""
 
 		# instantiate a ship
 		ship = Ship(num_holes, start_pos, orientation)
 		# add new ship to the ships list
-		ships.append(ship)
+		self.ships.append(ship)
 
 
 		# change board to reflect added ship
@@ -61,21 +77,43 @@ class Board:
 			if i < 10:			 
 				if orientation == "horizontal":
 					# make sure there's not a ship already there
-					if board[start_pos_row][start_pos_colmn + i] == 0:
-						board[start_pos_row][start_pos_colmn + i] = num_holes
+					if self.board[start_pos_row][start_pos_colmn + i] == 0:
+						self.board[start_pos_row][start_pos_colmn + i] = num_holes
 					
 				elif orientation == "vertical":
-					if boardboard[start_pos_row + 1][start_pos_colmn] == 0:
-						board[start_pos_row + i][start_pos_colmn] = num_holes
+					if self.board[start_pos_row + i][start_pos_colmn] == 0:
+						self.board[start_pos_row + i][start_pos_colmn] = num_holes
 			else:
 				print("This ship is off the board. Please choose a new start position")
 
+	def shoot_missle(self, row, column):
+		""" Shoot a missle at opponents board. """
 
-	def check_hits(self, location, player):
-		#if ship at location, hit
+	def play_game(self, ):
+		pass
 
-		check_win()
+	def check_hit(self, row, column):
+		""" check if the ship has been hit """
+		board_val = self.board[row][column]
+		if board_val != 0:
+			if board_val == "X":
+				print("Ship has previously been hit")
+			else:
+				# update board with an X
+				board_val = "X"
+				print("HIT!")
 
+				# check if ship is sunk
+				if check_ship_sunk():
+					print("You sunk my battleship!")
+					# check if player is the winner
+					if check_win():
+						print("You are the winner!")
+		else:
+			print("Miss")
+
+
+	def check_ship_sunk(self):
 
 	def check_win(self):
 
@@ -93,6 +131,7 @@ class Ship:
 		self.start_pos_row = start_pos_row
 		self.start_pos_colmn = start_pos_colmn
 		self.orientation = orientation
+		self.sunk = False
 
 		if self.orientation.lower() == "horizontal" or self.orientation.lower == "vertical": 
 			self.orientation = orientation.lower()
