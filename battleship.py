@@ -51,20 +51,24 @@ class Board:
 
 		# instantiate a ship
 		ship = Ship(num_holes, start_pos, orientation)
+		# add new ship to the ships list
+		ships.append(ship)
 
-		# check if there's a ship already
-		if self.board[num_holes[1]][num_holes[0]] != 0:
 
-		
-		# check that hole ship added to are not already taken
-		# check that no holes in ship are off the board.
 		# change board to reflect added ship
-		if orientation == "horizontal":
-
-
-		if orientation == "vertical"
-		# add ship to ships list
-		pass
+		for i in range(num_holes):
+			# make sure ship all holes of the ship will be on the board
+			if i < 10:			 
+				if orientation == "horizontal":
+					# make sure there's not a ship already there
+					if board[start_pos_row][start_pos_colmn + i] == 0:
+						board[start_pos_row][start_pos_colmn + i] = num_holes
+					
+				elif orientation == "vertical":
+					if boardboard[start_pos_row + 1][start_pos_colmn] == 0:
+						board[start_pos_row + i][start_pos_colmn] = num_holes
+			else:
+				print("This ship is off the board. Please choose a new start position")
 
 
 	def check_hits(self, location, player):
@@ -86,7 +90,6 @@ class Ship:
 	""" A class to represent a ship """
 	def __init__(self, num_holes, start_pos_row, start_pos_colmn, orientation):
 		self.num_holes = num_holes
-		# start pos is a tuple with (x, y) dimenstions
 		self.start_pos_row = start_pos_row
 		self.start_pos_colmn = start_pos_colmn
 		self.orientation = orientation
