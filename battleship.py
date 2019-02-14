@@ -19,7 +19,6 @@
 class Board:
 	""" A class to represent a board for each player """
 	
-
 	def __init__(self, player):
 		""" Instantiate each new board with a player and a board
 			consisting of 10 rows and columns of zeros: 
@@ -58,21 +57,29 @@ class Board:
 		     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0], 
 		     [0, 0, 0, 0, 0, 2, 0, 0, 0, 0], 
 		     [0, 0, 0, 0, 0, 2, 0, 0, 0, 0], 
-		     [0, 3, 0, 0, 0, 0, 0, 0, 0, 0], 
-		     [0, 3, 0, 0, 0, 0, 0, 0, 0, 0], 
-		     [0, 3, 0, 0, 0, 3, 3, 3, 0, 0], 
+		     [0, 3a, 0, 0, 0, 0, 0, 0, 0, 0], 
+		     [0, 3a, 0, 0, 0, 0, 0, 0, 0, 0], 
+		     [0, 3a, 0, 0, 0, 3b, 3b, 3b, 0, 0], 
 		     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0], 
 		     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]]
 		"""
 
 		# instantiate a ship
-		ship = Ship(num_holes, start_pos, orientation)
-		# add new ship to the ships list
-		self.ships.append(ship)
-
-
+		ship = Ship(num_holes, start_pos_row, start_pos_colmn, orientation)
+		
 		# change board to reflect added ship
-		for i in range(num_holes):
+		for i in range(ship.num_holes):
+			num_holes = ship.num_holes
+
+			# because there are two ships with 3 holes, we need to know
+			# if the ship being added is 3a or 3b
+			if num_holes == 3:
+			for ship in ships:
+				if ship.num_holes == 3:
+					num_holes = "3b"
+				else:
+					num_holes = "3a"
+
 			# make sure ship all holes of the ship will be on the board
 			if i < 10:			 
 				if orientation == "horizontal":
@@ -85,6 +92,10 @@ class Board:
 						self.board[start_pos_row + i][start_pos_colmn] = num_holes
 			else:
 				print("This ship is off the board. Please choose a new start position")
+
+		# add new ship to the ships list
+		self.ships.append(ship)
+
 
 	def shoot_missle(self, row, column):
 		""" Shoot a missle at opponents board. """
