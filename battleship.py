@@ -38,6 +38,7 @@ class Board:
 		self.player = player
 		self.board = [[0] * 10 for i in range(10)]
 		self.ships = []
+		self.in_play = True
 
 
 	def display_board(self):
@@ -74,7 +75,7 @@ class Board:
 			# because there are two ships with 3 holes, we need to know
 			# if the ship being added is 3a or 3b
 			if num_holes == 3:
-			for ship in ships:
+			for ship in self.ships:
 				if ship.num_holes == 3:
 					num_holes = "3b"
 				else:
