@@ -38,6 +38,7 @@ class Board:
 		"""
 		self.player = player
 		self.board = [[0] * 10 for i in range(10)]
+		self.ships = []
 
 
 	def display_board(self):
@@ -46,10 +47,23 @@ class Board:
 		print(self.board)
 
 
-	def add_ship(self, start_x, start_y, ship, orientation):
+	def add_ship(self, num_holes, start_pos_row, start_pos_colmn, orientation):
 
+		# instantiate a ship
+		ship = Ship(num_holes, start_pos, orientation)
+
+		# check if there's a ship already
+		if self.board[num_holes[1]][num_holes[0]] != 0:
+
+		
 		# check that hole ship added to are not already taken
 		# check that no holes in ship are off the board.
+		# change board to reflect added ship
+		if orientation == "horizontal":
+
+
+		if orientation == "vertical"
+		# add ship to ships list
 		pass
 
 
@@ -70,10 +84,18 @@ class Board:
 
 class Ship:
 	""" A class to represent a ship """
-	def __init__(self, num_holes, start_pos, orientation):
+	def __init__(self, num_holes, start_pos_row, start_pos_colmn, orientation):
 		self.num_holes = num_holes
-		self.start_pos = start_pos
+		# start pos is a tuple with (x, y) dimenstions
+		self.start_pos_row = start_pos_row
+		self.start_pos_colmn = start_pos_colmn
 		self.orientation = orientation
+
+		if self.orientation.lower() == "horizontal" or self.orientation.lower == "vertical": 
+			self.orientation = orientation.lower()
+		else:
+			print("Orientation must be vertical or horizontal")
+
 
 	def __repr__(self):
 		return f"holes: {self.num_holes}, start: {self.start_pos}, orient: {self.orientation}>"
